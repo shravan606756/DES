@@ -180,7 +180,7 @@ char *des_ecb_decrypt(const char *cipher_hex, const char *key_hex)
 
     /* Strip PKCS#7 padding. */
     unsigned char pad = plain[num_blocks * 8 - 1];
-    if (pad >= 1 && pad <= 8) {
+    if (pad >= 1 && pad <= 8 && (size_t)pad <= num_blocks * 8) {
         int valid = 1;
         for (size_t i = num_blocks * 8 - pad; i < num_blocks * 8; i++)
             if (plain[i] != pad) { valid = 0; break; }

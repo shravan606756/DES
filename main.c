@@ -260,7 +260,7 @@ int main(int argc, char **argv)
     if (!input || !key_arg) {
         if (hex_mode) {
             /* Expect:  <16-hex-block> <16-hex-key>  (whitespace separated) */
-            if (scanf("%4096s %16s", stdin_buf, stdin_key) != 2) {
+            if (scanf("%4095s %16s", stdin_buf, stdin_key) != 2) {
                 fprintf(stderr, "%serror%s: expected '<16-hex-block> <16-hex-key>' on stdin.\n",
                         C_RED, C_RESET);
                 return 1;
@@ -335,7 +335,7 @@ int main(int argc, char **argv)
                 return 1;
             }
             char *hex_copy = (char *)malloc(hlen + 1);
-            if (!hex_copy) { fprintf(stderr, "error: out of memory.\n"); return 1; }
+            if (!hex_copy) { fprintf(stderr, "%serror%s: out of memory.\n", C_RED, C_RESET); return 1; }
             memcpy(hex_copy, input, hlen + 1);
             str_to_upper(hex_copy, hlen);
             result = des_ecb_decrypt(hex_copy, key_hex);
