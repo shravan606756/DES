@@ -38,9 +38,9 @@ static void str_to_upper(char *s, size_t n)
 static void print_banner(void)
 {
     printf("%s%s"
-           "  ╔════════════════════════════════╗\n"
-           "  ║   DES Encryption Tool  v%-6s  ║\n"
-           "  ╚════════════════════════════════╝%s\n\n",
+           "  +================================+\n"
+           "  |   DES Encryption Tool  v%-6s  |\n"
+           "  +================================+%s\n\n",
            C_BOLD, C_CYAN, VERSION, C_RESET);
 }
 
@@ -125,7 +125,7 @@ static void print_result(int decrypt, int hex_mode,
            C_BOLD, C_CYAN, C_RESET, C_YELLOW, key_hex, C_RESET);
     printf("  %s%s%s%s: %s\n",
            C_BOLD, C_CYAN, in_lbl, C_RESET, input);
-    printf("  %s────────────────────────────────────────────%s\n",
+    printf("  %s--------------------------------------------%s\n",
            C_DIM, C_RESET);
     printf("  %s%s%s%s: %s%s%s\n\n",
            C_BOLD, C_CYAN, out_lbl, C_RESET,
